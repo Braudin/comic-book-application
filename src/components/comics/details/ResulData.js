@@ -24,7 +24,6 @@ export const ResulData = ({ data }) => {
     }
     setShowFavorites(false)
   }
-
   const removeFavorites = () => {
     const fav = JSON.parse(isCreate)
     const result = fav.filter((x) => x.id !== data.id)
@@ -35,7 +34,7 @@ export const ResulData = ({ data }) => {
   return (
     <>
       <Col md={4} lg={5} className='d-flex justify-content-end order-md-last'>
-        <Image src={data.image.original_url} fluid />
+        <Image src={data.image.medium_url} fluid />
       </Col>
       <Col md={8} lg={7}>
         {data.character_credits.length !== 0 && (
