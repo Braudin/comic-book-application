@@ -1,5 +1,7 @@
+import { IndexRouter } from './routers/IndexRouter'
+
 function App() {
-  return <div>Hola</div>
+  return <IndexRouter />
 }
 
 export default App

@@ -1,13 +1,124 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+// Configuration
+// @import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+$body-bg: $orange;
+// input
+$input-font-weight: 600;
+$input-placeholder-color: $orange-600;
+$input-color: $orange-800;
+$input-bg: $orange-400;
+$input-focus-bg: $orange-300;
+$input-box-shadow: none;
+$input-focus-box-shadow: none;
+$input-padding-x: 1rem;
+$input-border-radius: 2rem;
+$input-border-color: $orange-600;
+$input-focus-border-color: $orange-700;
+$input-group-addon-color: $orange-800;
+$input-group-addon-border-color: $orange-600;
+$input-group-addon-bg: $orange-300;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+$border-color: $orange-600;
+
+// Card
+$card-border-color: $orange-600;
+$card-bg: $orange-400;
+$card-border-radius: 1rem;
+$card-inner-border-radius: 1rem;
+
+//Btn
+$btn-bg-primary: $orange-600;
+
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+
+// Layout & components
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+// @import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+// @import '~bootstrap/scss/transitions';
+// @import '~bootstrap/scss/dropdown';
+// @import '~bootstrap/scss/button-group';
+// @import '~bootstrap/scss/nav';
+// @import '~bootstrap/scss/navbar';
+@import "~bootstrap/scss/card";
+// @import "~bootstrap/scss/accordion";
+// @import "~bootstrap/scss/breadcrumb";
+// @import "~bootstrap/scss/pagination";
+// @import "~bootstrap/scss/badge";
+// @import "~bootstrap/scss/alert";
+// @import "~bootstrap/scss/progress";
+// @import "~bootstrap/scss/list-group";
+// @import '~bootstrap/scss/close';
+// @import "~bootstrap/scss/toasts";
+// @import "~bootstrap/scss/modal";
+// @import "~bootstrap/scss/tooltip";
+// @import "~bootstrap/scss/popover";
+// @import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/spinners";
+// @import "~bootstrap/scss/offcanvas";
+// @import "~bootstrap/scss/placeholders";
+
+@import "~bootstrap/scss/helpers";
+
+@import "~bootstrap/scss/utilities/api";
+
+@import "~animate.css/animate.css";
+.header {
+  position: fixed;
+  background: $orange;
+  z-index: 999;
+  .input-group-text:hover {
+    color: $orange-800;
+    background: $orange-200;
+  }
+}
+.list-comic {
+  padding-top: 9rem;
+  .card-list {
+    text-decoration: none;
+    color: $orange-700;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    .card-title {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .card-text {
+      font-size: 10px;
+    }
+    &:hover {
+      background: $orange-200;
+      color: $orange-900;
+    }
+  }
+}
+.btn-primary {
+  background: $orange-300;
+  border-color: $orange-600;
+  color: $orange-800;
+  &:hover,
+  &:focus {
+    background: $orange-200;
+    border-color: $orange-600;
+    color: $orange-800;
+  }
+}
+a {
+  text-decoration: none;
+  color: $orange-800;
+  &:hover,
+  &:focus {
+    color: $orange-900;
+  }
 }
