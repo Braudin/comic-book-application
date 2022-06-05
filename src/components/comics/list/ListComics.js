@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Button, Col, Row } from 'react-bootstrap'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { getFetch } from '../../../help/fetch'
 import { LIMIT_PAGE, resources } from '../../../help/global'
 import { Loading } from '../../../help/Loading'
+import { NoData } from '../../../help/msjs/NoData'
 import { ItemListComic } from './ItemListComics'
 
 export const ListComics = () => {
@@ -12,6 +14,7 @@ export const ListComics = () => {
   const [listComics, setListComics] = useState([])
   const [loading, setLoading] = useState(false)
   const [errHttp, setErrHttp] = useState({})
+  const search = searchParams.get('search') || ''
 
   useEffect(() => {
     changeList()
@@ -19,7 +22,7 @@ export const ListComics = () => {
 
   useEffect(() => {
     Object.keys(errHttp).length !== 0 &&
-      navigate(`/error/${errHttp.status}/${errHttp.msj}`, { replace: true })
+      navigate(`/error/${errHttp.status}/${errHttp.msj}`)
   }, [errHttp])
 
   useEffect(() => {
@@ -29,34 +32,22 @@ export const ListComics = () => {
         : setListComics([...listComics, ...isues.results])
   }, [isues])
 
-  const changeList = (offset = 0) => {
+  const changeList = async (offset = 0) => {
     offset === 0 && setListComics([])
     setLoading(true)
-    const search = searchParams.get('search')
-    const filter =
-      search?.length !== 0 &&
-      `&offset=${offset}&filter=name:${search},aliases:${search}`
-    const url = `${resources.issues}${filter}`
-    fetch(url)
-      .then((res) => {
-        if (!res.ok) {
-          const err = new Error(res.statusText)
-          err.status = res.status
-          err.msj = res.statusText
-          throw err
-        }
-        return res.json()
-      })
-      .then((res) => {
-        console.log(res)
-        setIsues(res)
-      })
-      .catch((err) =>
-        setErrHttp(
-          err.status ? err : { status: 0, msj: 'ERR_NAME_NOT_RESOLVED' }
-        )
-      )
-      .finally((end) => setLoading(false))
+    if (search !== 'favorites') {
+      const filter = `&offset=${offset}&filter=name:${search},aliases:${search}`
+      const url = `${resources.issues}${filter}`
+      await getFetch(url, setIsues, setErrHttp)
+    } else {
+      const isCreate = localStorage.getItem('favorites')
+      if (isCreate) {
+        const fav = JSON.parse(isCreate)
+        setListComics(fav)
+      }
+    }
+
+    setLoading(false)
   }
 
   return (
@@ -71,18 +62,20 @@ export const ListComics = () => {
         ))}
       </Row>
       <Row className='d-flex justify-content-center mt-5'>
+        {listComics.length === 0 && !loading && <NoData />}
         <Col xs={12} md={6} lg={4} className='d-flex justify-content-center'>
           {loading ? (
             <Loading />
           ) : (
             <>
-              {listComics.length < isues.number_of_total_results && (
-                <Button
-                  variant='primary'
-                  onClick={() => changeList(isues.offset + LIMIT_PAGE)}>
-                  Load more results
-                </Button>
-              )}
+              {listComics.length < isues.number_of_total_results &&
+                search !== 'favorites' && (
+                  <Button
+                    variant='primary'
+                    onClick={() => changeList(isues.offset + LIMIT_PAGE)}>
+                    Load more results
+                  </Button>
+                )}
             </>
           )}
         </Col>

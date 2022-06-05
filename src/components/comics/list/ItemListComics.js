@@ -4,7 +4,10 @@ import { dateOptios, language } from '../../../help/global'
 
 export const ItemListComic = ({ comic }) => {
   return (
-    <Card className='card-list h-100' as={Link} to={`/view/${comic.id}`}>
+    <Card
+      className='card-list h-100'
+      as={Link}
+      to={`/details/${encodeURIComponent(comic.api_detail_url)}`}>
       <Card.Img variant='top' src={comic.image.small_url} />
       <Card.Body>
         <Card.Title>
