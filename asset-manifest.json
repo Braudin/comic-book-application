@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/comic-book-application/static/css/main.6ec9678e.css",
-    "main.js": "/comic-book-application/static/js/main.2ba268f2.js",
+    "main.js": "/comic-book-application/static/js/main.95f2ad56.js",
     "index.html": "/comic-book-application/index.html",
     "main.6ec9678e.css.map": "/comic-book-application/static/css/main.6ec9678e.css.map",
-    "main.2ba268f2.js.map": "/comic-book-application/static/js/main.2ba268f2.js.map"
+    "main.95f2ad56.js.map": "/comic-book-application/static/js/main.95f2ad56.js.map"
   },
   "entrypoints": [
     "static/css/main.6ec9678e.css",
-    "static/js/main.2ba268f2.js"
+    "static/js/main.95f2ad56.js"
   ]
 }
