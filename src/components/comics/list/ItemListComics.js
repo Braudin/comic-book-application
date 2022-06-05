@@ -1,15 +1,18 @@
 import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { dateOptios, language } from '../../../help/global'
 
-export const ItemListComic = () => {
+export const ItemListComic = ({ comic }) => {
   return (
-    <Card>
-      <Card.Img
-        variant='top'
-        src='https://comicvine.gamespot.com/a/uploads/scale_small/0/4/32659-4571-36430-1-superman-the-man-of.jpg'
-      />
+    <Card className='card-list h-100' as={Link} to={`/view/${comic.id}`}>
+      <Card.Img variant='top' src={comic.image.small_url} />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>Some quick exam</Card.Text>
+        <Card.Title>
+          {`# ${comic.issue_number} ${comic.name ? comic.name : ''}`}
+        </Card.Title>
+        <Card.Text>
+          {new Date(comic.date_added).toLocaleDateString(language, dateOptios)}
+        </Card.Text>
       </Card.Body>
     </Card>
   )

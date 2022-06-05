@@ -9,13 +9,16 @@ $input-font-weight: 600;
 $input-placeholder-color: $orange-600;
 $input-color: $orange-800;
 $input-bg: $orange-400;
-$input-focus-bg: $orange-200;
+$input-focus-bg: $orange-300;
 $input-box-shadow: none;
 $input-focus-box-shadow: none;
 $input-padding-x: 1rem;
 $input-border-radius: 2rem;
 $input-border-color: $orange-600;
 $input-focus-border-color: $orange-700;
+$input-group-addon-color: $orange-800;
+$input-group-addon-border-color: $orange-600;
+$input-group-addon-bg: $orange-300;
 
 $border-color: $orange-600;
 
@@ -24,6 +27,9 @@ $card-border-color: $orange-600;
 $card-bg: $orange-400;
 $card-border-radius: 1rem;
 $card-inner-border-radius: 1rem;
+
+//Btn
+$btn-bg-primary: $orange-600;
 
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/utilities";
@@ -37,7 +43,7 @@ $card-inner-border-radius: 1rem;
 @import "~bootstrap/scss/grid";
 // @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
-// @import '~bootstrap/scss/buttons';
+@import "~bootstrap/scss/buttons";
 // @import '~bootstrap/scss/transitions';
 // @import '~bootstrap/scss/dropdown';
 // @import '~bootstrap/scss/button-group';
@@ -57,7 +63,7 @@ $card-inner-border-radius: 1rem;
 // @import "~bootstrap/scss/tooltip";
 // @import "~bootstrap/scss/popover";
 // @import "~bootstrap/scss/carousel";
-// @import "~bootstrap/scss/spinners";
+@import "~bootstrap/scss/spinners";
 // @import "~bootstrap/scss/offcanvas";
 // @import "~bootstrap/scss/placeholders";
 
@@ -66,8 +72,46 @@ $card-inner-border-radius: 1rem;
 @import "~bootstrap/scss/utilities/api";
 
 @import "~animate.css/animate.css";
-
-.img-card-list-comic {
-  width: auto;
-  height: 200px;
+.header {
+  position: fixed;
+  background: $orange;
+  z-index: 999;
+  .input-group-text:hover {
+    color: $orange-800;
+    background: $orange-200;
+  }
+}
+.list-comic {
+  padding-top: 9rem;
+  .card-list {
+    text-decoration: none;
+    color: $orange-700;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    .card-title {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .card-text {
+      font-size: 10px;
+    }
+    &:hover {
+      background: $orange-200;
+      color: $orange-900;
+    }
+  }
+}
+.btn-primary {
+  background: $orange-300;
+  border-color: $orange-600;
+  color: $orange-800;
+  &:hover,
+  &:focus {
+    background: $orange-200;
+    border-color: $orange-600;
+    color: $orange-800;
+  }
 }
